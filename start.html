@@ -1,0 +1,617 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>18th Birthday</title>
+
+    <!-- GOOGLE FONTS -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display&display=swap" rel="stylesheet">
+
+    <style>
+      /* -------------------- BASE STYLES -------------------- */
+      body {
+        margin: 0;
+        padding: 0 0 80px 0; /* extra bottom padding */
+        min-height: 100vh;
+        background: linear-gradient(-45deg, #ffd8a7, #f6b6b6, #e396cc, #d173e3, #ab54e7);
+        background-size: 400% 100%;
+        animation: gradientBG 7s ease infinite; /* animated gradient */
+        font-family: 'Playfair Display', serif;
+        color: #fff;
+        text-align: center;
+      }
+
+      /* -------------------- HEADER TEXT -------------------- */
+      .start {
+        margin: 60px 20px 40px 20px;
+        line-height: 1;
+        z-index: 1;
+      }
+      .start h1, .start h2, section h2 {
+        font-family: 'Great Vibes', cursive; /* cursive font for headings */
+      }
+      .start h1, .start h2 {
+        margin: 0;
+        opacity: 0; /* initial hidden for animation */
+      }
+      /* First header line */
+      .start h1:first-child {
+        font-size: clamp(2rem, 6vw, 4rem);
+        animation: fadeSlide 1.5s ease forwards;
+        margin-bottom: 40px;
+      }
+      /* Crown symbol */
+      .start h1:nth-child(2) {
+        font-size: clamp(3rem, 8vw, 6rem);
+        animation: fadeInPop 1.5s ease forwards, sparkle 2.5s infinite alternate;
+        animation-delay: 0.8s;
+      }
+      /* Name of the debutant */
+      .start h1:nth-child(3) {
+        font-size: clamp(2.5rem, 6vw, 5rem);
+        animation: fadeInPop 1.5s ease forwards, sparkle 2.5s infinite alternate;
+        animation-delay: 1.6s;
+      }
+      /* Subheading */
+      .start h2 {
+        font-size: clamp(1.5rem, 3vw, 2.5rem);
+        animation: fadeInPop 1.5s ease forwards, sparkle 2.5s infinite alternate;
+        animation-delay: 2.4s;
+      }
+
+      /* -------------------- IMAGE SECTION -------------------- */
+      .picture {
+        display: flex;
+        justify-content: center;
+        margin: 20px 0 50px 0;
+        position: relative;
+      }
+      .picture img {
+        width: auto;
+        max-width: 90%;
+        height: 500px;
+        margin-top: 30px;
+        object-fit: cover;
+        border-radius: 50% 50% 30px 30px;
+        opacity: 0;
+        animation: fadeInPop 2s ease forwards, float 6s ease-in-out infinite;
+        animation-delay: 2.5s;
+
+        /* Princess-style border */
+        border: 8px solid #ffc0e0;
+        box-shadow: 0 15px 50px rgba(255, 182, 193, 0.5);
+        padding: 5px;
+        background: #ffe1f0;
+      }
+
+      /* -------------------- INFO SECTION -------------------- */
+      .info {
+        min-height: auto;  /* height adjusts to content */
+        padding: 80px 20px;
+        width: 100%;
+        max-width: none;
+        margin: 0;
+        padding: clamp(20px, 5%, 100px);
+        text-align: center;
+        box-sizing: border-box;
+        background: url('rap.jpg') center/cover no-repeat;
+        color: #fff;
+      }
+
+      /* -------------------- VIDEO -------------------- */
+      .vid{
+        margin: 0 auto;
+      }
+      video {
+        width: 100%;
+        max-width: auto;
+        height: auto;
+        border: 8px solid #ffc0e0;
+        border-radius: 25px;
+        box-shadow: 0 10px 30px rgba(255, 182, 193, 0.5);
+        padding: 5px;
+        background: #ffe1f0;
+      }
+
+      /* -------------------- SECTIONS -------------------- */
+      section {
+        max-width: 1000px;
+        margin: 60px auto;
+        padding: 60px 20px;
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 1s ease, transform 1s ease;
+        box-sizing: border-box;
+      }
+      section.show {
+        margin-top: 0;
+        opacity: 1;
+        transform: translateY(0);
+      }
+      section h1 {
+        font-family: 'Great Vibes', cursive;
+        font-size: 100px;
+        animation: fadeInPop 1.5s ease forwards, sparkle 2.5s infinite alternate;
+        animation-delay: 0.8s;
+      }
+      section h2 {
+        margin-bottom: 20px;
+        font-size: 50px;
+        animation: fadeInPop 1.5s ease forwards, sparkle 2.5s infinite alternate;
+        animation-delay: 0.8s;
+      }
+      section p,
+      .details div {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.2rem;
+        line-height: 1.2;
+      }
+
+      /* -------------------- WHAT, WHEN, WHERE -------------------- */
+      .details {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .details div {
+        background: rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 15px;
+        width: 500px;
+        padding: 30px 30px 50px 30px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        margin: 0 auto 20px;
+        color: #fff;
+      }
+      .details strong {
+        font-size: 3rem;
+        font-family: 'Great Vibes', cursive;
+        display: block;
+      }
+
+      /* -------------------- DRESS CODE -------------------- */
+      
+      .dress-code {
+        min-height: auto;              /* adjusts to content */
+        padding: clamp(20px, 5%, 100px);
+        width: 100%;
+        max-width: none;               /* no max-width restriction */
+        margin: 0;                     /* remove margins */
+        text-align: center;
+        box-sizing: border-box;
+
+        /* 📜 Background */
+        background: url('paper.png') center/cover no-repeat;
+        color: #fff;                   /* ensures text is readable */
+        position: relative;
+        z-index: 1;                                 /* content respects rounded edges */ /* additional softer spread */
+      }
+      .dress-code h1, .dress-code h2 {
+        margin: 0;
+        padding: 0;
+        line-height: 1.5;
+        
+      }
+      .dress-code h1 {
+        letter-spacing: 10px;
+
+      }
+      .dress-code p {
+        text-align: justify;
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 0 50px;
+        line-height: 1.5;
+        text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+      }
+      .swatches {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 15px;
+      }
+      .swatches span {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+      }
+
+    
+    /* --------------------- GALLERY CROUSEL ------------*/
+  .gallery-carousel {
+        min-height: auto;              /* height adjusts to content */
+        padding: clamp(20px, 5%, 100px);
+        width: 100%;
+        max-width: none;               /* no max width restriction */
+        margin: 0;                     /* remove margins */
+        text-align: center;
+        box-sizing: border-box;
+        
+      }
+
+
+      .carousel-container {
+        width: 100%;
+        max-width: 500px; /* desktop max width */
+        aspect-ratio: 5/8; /* maintain a fixed ratio */
+        overflow: hidden;
+        border-radius: 15px;
+        position: relative;
+        margin: 0 auto;  /* center horizontally */
+        border: 1px solid white;
+        border-radius: 25px;
+        box-shadow: 0 8px 30px rgba(255, 105, 180, 0.6);  
+      }
+
+      .carousel-track {
+        display: flex;
+        height: 100%;
+        transition: transform 0.5s ease;
+        
+      }
+
+      .carousel-track img {
+        flex-shrink: 0;
+        width: 100%;        /* fill container width */
+        height: 100%;       /* fill container height */
+        object-fit: cover;  /* crop images nicely without stretching */
+        object-position: center; /* center image content */
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        
+      }
+    /* Carousel buttons */
+      .prev, .next {
+        position: absolute;
+        top: 50%;
+        width: 50px;
+        height: 50px;
+        color: white;
+        background: rgba(255, 255, 255, 0.2);
+        border: none;
+        font-size: 2rem;
+        cursor: pointer;
+        border-radius: 50%;
+        z-index: 10;
+        transition: background 0.3s;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transform: translateY(-50%); /* keeps the circle vertically centered */
+        padding: 0; /* remove extra padding to avoid shifting the arrow */
+      }
+
+      .prev { left: 10px; }
+      .next { right: 10px; }
+
+      .prev:hover, .next:hover {
+        background: rgba(255, 182, 193, 0.9);
+      }
+
+
+      /* -------------------- THE EIGHTEENS -------------------- */
+
+      .eight {
+        width: 100%;
+        max-width: none;                                /* remove max-width limit */
+        margin: 0;
+        padding: clamp(40px, 5%, 100px);               /* responsive padding */
+        min-height: 100vh;                             /* full viewport height */
+        padding: 80px 20px;
+        background: 
+          linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), /* dark overlay */
+          url('flower.jpg') center/cover no-repeat;    /* full coverage image */
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-radius: 0;                               /* full width, so no rounding */
+        box-sizing: border-box;
+        color: #fff;
+        text-align: center;
+      }
+
+      .eight h2 {
+        font-size: clamp(2rem, 5vw, 4rem);
+        margin-bottom: 40px;
+        text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
+      }
+      .eight {
+        width: 100%;
+        max-width: none;
+        margin: 0;
+        padding: clamp(40px, 5%, 100px);
+        min-height: 100vh;
+        background: 
+          linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), /* dark overlay on background only */
+          url('flower.jpg') center/cover no-repeat;
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-radius: 0;
+        box-sizing: border-box;
+        color: #fff;
+        text-align: center;
+      }
+
+      /* Keep .eighteens div as-is without darkening */
+      .eighteens {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        width: 100%;
+        max-width: 1200px;
+      }
+      .eighteens div {
+        
+        border-radius: 15px;
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+        transition: transform 0.3s;
+        font-size: 1.2rem;
+      }
+      .eighteens div:hover {
+        transform: scale(1.05);
+      }
+
+
+      /* -------------------- RSVP -------------------- */
+      .rsvp {
+        background: rgba(255, 255, 255, 0.1);
+        border: 2px solid #fff;
+        min-height: auto;
+        padding: 60px 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 40px 20px 100px;
+        margin-bottom: 20px;
+        margin-top: 50px;
+      }
+      .rsvp p {
+        width: 80%;            /* or any max width you want */
+        max-width: 400px;      /* prevents it from stretching too wide */
+        line-height: 2;
+        text-align: center;
+        margin: 0 auto;   
+
+      }
+      .rsvp button {
+        margin-top: 10px;
+        padding: 15px 50px;
+        border: 2px solid white;
+        border-radius: 25px;
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 20px;
+        color: white;
+        background-color: transparent;
+      }
+      .rsvp button:hover {
+        transition: 0.2s ease-in-out;
+        background-color: pink;
+      }
+
+      /* -------------------- ANIMATIONS -------------------- */
+      @keyframes gradientBG {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+      @keyframes fadeSlide {
+        0% { opacity: 0; transform: translateY(-30px); }
+        100% { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-20px); }
+      }
+      @keyframes fadeInPop {
+        0% { opacity: 0; transform: scale(0.8); }
+        60% { opacity: 1; transform: scale(1.05); }
+        100% { opacity: 1; transform: scale(1); }
+      }
+      @keyframes sparkle {
+        0% { text-shadow: 1px 1px 6px rgba(255, 255, 255, 0.3); }
+        100% { text-shadow: 1px 1px 8px rgba(255, 255, 255, 0.7); }
+      }
+
+      /* -------------------- RESPONSIVE: TABLET -------------------- */
+      @media (max-width: 768px) {
+        .start h1:first-child { font-size: 2.2rem; }
+        .start h1:nth-child(2), .start h1:nth-child(3) { font-size: 3rem; }
+        .start h2 { font-size: 1.8rem; }
+        .gallery img { width: 95%; }
+        .details div { width: 260px; }
+        .carousel-track img { margin: 0 5px; }
+        video {width: 90%; height: auto;}
+      }
+
+      /* -------------------- RESPONSIVE: MOBILE -------------------- */
+      @media (max-width: 600px) {
+        .start h1:first-child { font-size: 1.9rem; }
+        .start h1:nth-child(3), .start h1:nth-child(3) { font-size: 3.5rem; }
+        .start h2 { font-size: 2rem; }
+        .picture img, .vid video { width: 95%; height: 100% auto; }
+        .rsvp { min-height: 240px; margin-bottom: 220px; }
+        section { padding: 30px 15px; }
+        .details div { width: 260px; }
+        .dress-code {margin: 0; padding-bottom: 100px; padding-top: 100px;}
+        .details strong { font-size: 40px; }
+        .dress-code h1 { font-size: 60px;}
+        .dress-code h2 { font-size: 40px;}
+        .dress-code h1, h2 { line-height: 2;}
+    .gallery-carousel {
+      max-width: 100%;      /* smaller than full screen */
+      padding-left: 20px;
+      padding-right: 20px;
+      padding-bottom: 50;
+      padding-top: 0;
+      margin: 0 auto;       /* center horizontally */
+      overflow: hidden;
+    }
+
+    .carousel-container {
+      max-width: 100%;
+      margin: 0 auto;
+    }
+
+    .carousel-track img {
+      width: 100%;          /* fill container width */
+      height: auto;         /* maintain aspect ratio */
+      object-fit: cover;    
+      margin: 0;
+    }
+
+    .prev, .next {
+      font-size: 1.5rem;
+      padding: 8px 12px;
+    }
+        .prev, .next { font-size: 1.5rem; padding: 8px 12px;}
+      }
+      
+    </style>
+  </head>
+  <body>
+    <!-- -------------------- SECTION 1: HEADER -------------------- -->
+    <div class="start">
+      <h1>Join us as we celebrate</h1>
+      <h1>♛</h1>
+      <h1>Yoanna Yssabel Canar's</h1><br>
+      <h2>18th Debut Celebration</h2>
+    </div>
+
+    <!-- -------------------- SECTION 2: MAIN PICTURE -------------------- -->
+    <div class="picture">
+      <img src="sample.jpg" alt="Birthday Picture">
+    </div>
+
+    <!-- -------------------- SECTION 3: WHAT, WHEN, WHERE -------------------- -->
+    <section class="info">
+      <div class="details">
+        <div><strong>What</strong><b>|</b><br><br>Yoanna Yssabel Canar's <br> 18th Debut Celebration </div>
+        <div><strong>When</strong><b>|</b><br><br>October 11, 2025, Saturday <br> 5:00 PM</div>
+        <div><strong>Where</strong><b>|</b><br><br>Purple Avenue Events Place Grand Heights, <br> Sierra Madre St., Antipolo City</div>
+      </div>
+    </section>
+
+    <!-- -------------------- SECTION 4: VIDEO -------------------- -->
+    <section class="vid"> 
+      <h2>A Glimpse of the Debutant</h2>
+      <video autoplay muted loop playsinline controls controlslist="nodownload nofullscreen noremoteplayback" oncontextmenu="return false;">
+        <source src="samplevid.mp4" type="video/mp4">
+      </video>
+    </section>
+
+    <!-- -------------------- SECTION 5: DRESS CODE -------------------- -->
+    <section class="dress-code">
+      <h1>Details</h1>
+      <h2>Additional Reminder</h2>
+      <p>We wish we could accommodate all our friends and family, but resources are limited. We hope for your kind understanding by not bringing plus ones to our event. Keep safe!</p><br>
+      <h2>Dress Code</h2>
+      <p style="text-align: center;">Pastel Colors</p><br>
+      <p>All guests and entourage are requested to attend in semi-formal attire in any shade of green and neutral color. <strong>Strictly NO wearing of white!</strong></p>
+      <div class="swatches">
+        <span style="background:#3a5d3b;"></span>
+        <span style="background:#5d7c5d;"></span>
+        <span style="background:#a7c7a7;"></span>
+        <span style="background:#d4c2a8;"></span>
+      </div><br>
+      <h2>Gift Guide</h2>
+      <p>Your presence and prayers are all we need. But if you desire to give nonetheless, cash gift is suggested.</p>
+    </section>
+
+    <!-- -------------------- SECTION 6: GALLERY -------------------- -->
+  <section class="gallery-carousel">
+    <h2>Meet Yoanna</h2>
+    <div class="carousel-container">
+      <div class="carousel-track">
+        <img src="t1.jpg" alt="Photo 1">
+        <img src="t2.jpg" alt="Photo 2">
+        <img src="t3.jpg" alt="Photo 3">
+        <img src="t4.jpg" alt="Photo 4">
+      </div>
+
+      <!-- Buttons now INSIDE the container -->
+      <button class="prev">&#10094;</button>
+      <button class="next">&#10095;</button>
+    </div>
+  </section>
+
+    <!-- -------------------- SECTION 7: THE EIGHTEENS -------------------- -->
+    <section class="eight">
+      <h2>The Eighteens</h2>
+      <div class="eighteens">
+        <div>18 ROSES</div>
+        <div>18 HANDWRITEN LETTERS</div>
+        <div>18 LUCKY ENVELOPES</div>
+        <div>18 TREASURES</div>
+        <div>18 CHEERS</div>
+      </div>
+    </section>
+
+    <!-- -------------------- SECTION 8: RSVP -------------------- -->
+    <section>
+      <div class="rsvp">
+      <h2>RSVP</h2>
+      <p>We are looking forward to celebrating with you! The favor of your reply is requested on or before September 19, 2024</p><br>
+      <p>Contact: Lara – 09154154819</p><br>
+      <p>Confirm Your attendance through clicking the button below</p><br>
+      <button>Attendance</button>
+      </div>
+    </section>
+
+    <!-- -------------------- FOOTER -------------------- -->
+    <footer>©2025 by Justeen. | All rights reserved</footer>
+
+    <!-- -------------------- SCROLL ANIMATION SCRIPT -------------------- -->
+    <script>
+      const sections = document.querySelectorAll("section");
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) entry.target.classList.add("show");
+        });
+      }, { threshold: 0.5 });
+      sections.forEach(section => observer.observe(section));
+
+      const track = document.querySelector('.carousel-track');
+      const slides = Array.from(track.children);
+      const nextButton = document.querySelector('.next');
+      const prevButton = document.querySelector('.prev');
+
+      let currentIndex = 0;
+
+      // Calculate slide width dynamically
+      function updateCarousel() {
+        const slideWidth = track.clientWidth; // responsive width
+        track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+      }
+
+      nextButton.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % slides.length;
+        updateCarousel();
+      });
+
+      prevButton.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        updateCarousel();
+      });
+
+      // Auto-slide every 3 seconds
+      setInterval(() => {
+        currentIndex = (currentIndex + 1) % slides.length;
+        updateCarousel();
+      }, 3000);
+
+      // Update carousel on window resize
+      window.addEventListener('resize', updateCarousel);
+    </script>
+  </body>
+  </html>
