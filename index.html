@@ -105,8 +105,9 @@
       }
       video {
         width: 100%;
-        max-width: auto;
         height: auto;
+        max-height: 90vh; /* prevent it from being too tall */
+        object-fit: contain; /* keeps full portrait video visible */
         border: 8px solid #ffc0e0;
         border-radius: 25px;
         box-shadow: 0 10px 30px rgba(255, 182, 193, 0.5);
@@ -474,7 +475,11 @@
       font-size: 1.5rem;
       padding: 8px 12px;
     }
-        .prev, .next { font-size: 1.5rem; padding: 8px 12px;}
+    .prev, .next { 
+      font-size: 1.5rem; 
+      padding: 8px 12px;
+    }
+
       }
       
     </style>
@@ -506,7 +511,7 @@
     <section class="vid"> 
       <h2>A Glimpse of the Debutant</h2>
       <video autoplay muted loop playsinline controls controlslist="nodownload nofullscreen noremoteplayback" oncontextmenu="return false;">
-        <source src="samplevid.mp4" type="video/mp4">
+        <source src="realvid.mp4" type="video/mp4">
       </video>
     </section>
 
@@ -517,12 +522,12 @@
       <p>We wish we could accommodate all our friends and family, but resources are limited. We hope for your kind understanding by not bringing plus ones to our event. Keep safe!</p><br>
       <h2>Dress Code</h2>
       <p style="text-align: center;">Pastel Colors</p><br>
-      <p>All guests and entourage are requested to attend in semi-formal attire in any shade of green and neutral color. <strong>Strictly NO wearing of white!</strong></p>
+      <p>All guests and entourage are requested to attend in semi-formal attire in any shade of pastel. <strong>Strictly NO wearing of white!</strong></p>
       <div class="swatches">
-        <span style="background:#3a5d3b;"></span>
-        <span style="background:#5d7c5d;"></span>
+        <span style="background:#FFD1DC;"></span>
+        <span style="background:#FFFACD;"></span>
         <span style="background:#a7c7a7;"></span>
-        <span style="background:#d4c2a8;"></span>
+        <span style="background:#AEC6CF;"></span>
       </div><br>
       <h2>Gift Guide</h2>
       <p>Your presence and prayers are all we need. But if you desire to give nonetheless, cash gift is suggested.</p>
